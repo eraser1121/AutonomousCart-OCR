@@ -37,7 +37,7 @@ while True:
             class_id = np.argmax(scores)
             confidence = scores[class_id]
 
-            if confidence > 0.5:
+            if confidence > 0.3:
                 # Object detected
                 center_x = int(detection[0] * w)
                 center_y = int(detection[1] * h)
