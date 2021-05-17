@@ -56,7 +56,7 @@ while True:
     for i in range(len(boxes)):
         if i in indexes:
             x, y, w, h = boxes[i]
-            label = str(classes[class_ids[i]])
+            label = 'box'
             score = confidences[i]
 
             # 경계상자와 클래스 정보 이미지에 입력
