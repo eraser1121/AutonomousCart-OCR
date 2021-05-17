@@ -8,7 +8,7 @@ YOLO_net = cv2.dnn.readNet('yolov3-tiny_best.weights','yolov3-tiny.cfg')
 
 # YOLO NETWORK 재구성
 classes = []
-with open("obj.data", "r") as f:
+with open("obj.names", "r") as f:
     classes = [line.strip() for line in f.readlines()]
 layer_names = YOLO_net.getLayerNames()
 output_layers = [layer_names[i[0] - 1] for i in YOLO_net.getUnconnectedOutLayers()]
@@ -17,7 +17,7 @@ while True:
     # 웹캠 프레임
     ret, frame = VideoSignal.read()
     h, w, c = frame.shape
-    print(h,w)
+   
 
     # YOLO 입력
     blob = cv2.dnn.blobFromImage(frame, 0.00392, (416, 416), (0, 0, 0),
