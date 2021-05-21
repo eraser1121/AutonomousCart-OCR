@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import serial
 
 # 웹캠 신호 받기
 VideoSignal = cv2.VideoCapture(0)
@@ -17,6 +18,7 @@ while True:
     # 웹캠 프레임
     ret, frame = VideoSignal.read()
     h, w, c = frame.shape
+    print(h,w,c)
    
 
     # YOLO 입력
@@ -51,7 +53,8 @@ while True:
                 class_ids.append(class_id)
 
     indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.45, 0.4)
-
+    
+        
 
     for i in range(len(boxes)):
         if i in indexes:
