@@ -78,15 +78,15 @@ while VideoSignal.isOpened():
             
             if best_x > 320 :
                 print("오른쪽으로 이동")
-                ser.write('1')
+                ser.write(1)
 
             elif best_x + best_w < 320 :
                 print("왼쪽으로 이동")
-                ser.write('2')
+                ser.write(2)
 
             else :
                 print("직진")
-                ser.write('3')
+                ser.write(3)
                 break
 
         """
