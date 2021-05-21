@@ -87,7 +87,7 @@ while VideoSignal.isOpened():
             else :
                 print("직진")
                 ser.write(3)
-                break
+
 
         """
         for i in range(len(boxes)):
