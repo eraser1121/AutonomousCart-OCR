@@ -17,7 +17,7 @@ OCR_Locations = [
 ]
 
 print("[Info] loading images...")
-image = cv2.imread("myimg1.png")
+image = cv2.imread("cap_img.jpg")
 template = cv2.imread("myform.jpg")
 
 print("[Info] aligning images...")

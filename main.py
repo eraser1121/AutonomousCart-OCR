@@ -86,6 +86,8 @@ while VideoSignal.isOpened():
 
             else :
                 print("직진")
+                cv2.imwrite('cap_img.jpg', frame)
+
                 ser.write(serial.to_bytes([int('3',16)]))
                 break;
 
