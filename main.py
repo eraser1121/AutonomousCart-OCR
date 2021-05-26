@@ -74,7 +74,7 @@ while VideoSignal.isOpened():
             bestscore = confidences.index(max(confidences))
             best_x, best_y, best_w, best_h = boxes[bestscore]
             center_best_x = best_x + best_w/2
-            cv2.rectangle(frame, (best_x, best_y), (best_x + best_w, best_y + best_h), (0, 0, 255), 5)
+            new_frame = cv2.rectangle(frame, (best_x, best_y), (best_x + best_w, best_y + best_h), (0, 0, 255), 5)
             
             if best_x > 320 :
                 print("오른쪽으로 이동")
@@ -105,7 +105,7 @@ while VideoSignal.isOpened():
         """
     
 
-        cv2.imshow("YOLOv3", frame)
+        cv2.imshow("YOLOv3", new_frame)
 
         if cv2.waitKey(100) > 0:
             break
