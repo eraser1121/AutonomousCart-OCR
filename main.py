@@ -87,6 +87,7 @@ while VideoSignal.isOpened():
             else :
                 print("직진")
                 ser.write(serial.to_bytes([int('3',16)]))
+                break;
 
 
         """
