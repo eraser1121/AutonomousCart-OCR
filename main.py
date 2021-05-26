@@ -74,11 +74,10 @@ while VideoSignal.isOpened():
             bestscore = confidences.index(max(confidences))
             best_x, best_y, best_w, best_h = boxes[bestscore]
             center_best_x = best_x + best_w/2
-            new_frame = frame 
-            cv2.rectangle(frame, (best_x, best_y), (best_x + best_w, best_y + best_h), (0, 0, 255), 5)
             
             if best_x > 320 :
                 print("오른쪽으로 이동")
+
                 ser.write(serial.to_bytes([int('1',16)]))
 
             elif best_x + best_w < 320 :
@@ -87,11 +86,11 @@ while VideoSignal.isOpened():
 
             else :
                 print("직진")
-                cv2.imwrite('cap_img.jpg', new_frame)
-
+                cv2.imwrite('cap_img.jpg', frame)
                 ser.write(serial.to_bytes([int('3',16)]))
                 break;
 
+            cv2.rectangle(frame, (best_x, best_y), (best_x + best_w, best_y + best_h), (0, 0, 255), 5)
 
         """
         for i in range(len(boxes)):
