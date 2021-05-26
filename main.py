@@ -28,9 +28,9 @@ while VideoSignal.isOpened():
     ret, frame = VideoSignal.read()
     if ret is False:
         break
-    if frame_num != 10:
+    if frame_num != 20:
         frame_num += 1
-    elif frame_num == 10:
+    elif frame_num == 20:
         frame_num = 0
 
         h, w, c = frame.shape
@@ -54,7 +54,7 @@ while VideoSignal.isOpened():
                 class_id = np.argmax(scores)
                 confidence = scores[class_id]
 
-                if confidence > 0.3:
+                if confidence > 0.4:
                     # Object detected
                     center_x = int(detection[0] * w)
                     center_y = int(detection[1] * h)
@@ -78,15 +78,15 @@ while VideoSignal.isOpened():
             
             if best_x > 320 :
                 print("오른쪽으로 이동")
-                ser.write(1)
+                ser.write(serial.to_bytes([int('1',16)]))
 
             elif best_x + best_w < 320 :
                 print("왼쪽으로 이동")
-                ser.write(2)
+                ser.write(serial.to_bytes([int('2',16)]))
 
             else :
                 print("직진")
-                ser.write(3)
+                ser.write(serial.to_bytes([int('3',16)]))
 
 
         """
