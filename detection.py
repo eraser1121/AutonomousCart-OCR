@@ -5,7 +5,7 @@ import serial
 # 웹캠 신호 받기
 VideoSignal = cv2.VideoCapture(0)
 # YOLO 가중치 파일과 CFG 파일 로드
-YOLO_net = cv2.dnn.readNet('yolov3-tiny_best.weights','yolov3-tiny.cfg')
+YOLO_net = cv2.dnn.readNet('yolov3-tiny_last.weights','yolov3-tiny.cfg')
 
 # YOLO NETWORK 재구성
 classes = []
@@ -18,8 +18,7 @@ while True:
     # 웹캠 프레임
     ret, frame = VideoSignal.read()
     h, w, c = frame.shape
-    print(h,w,c)
-   
+
 
     # YOLO 입력
     blob = cv2.dnn.blobFromImage(frame, 0.00392, (416, 416), (0, 0, 0),
