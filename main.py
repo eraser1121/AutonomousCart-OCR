@@ -106,7 +106,7 @@ while VideoSignal.isOpened():
         """
     
 
-        cv2.imshow("YOLOv3", new_frame)
+        cv2.imshow("YOLOv3", frame)
 
         if cv2.waitKey(100) > 0:
             break
