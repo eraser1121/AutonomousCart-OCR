@@ -3,12 +3,12 @@ import imutils
 import cv2
 
 def align_images(image, template, maxFeatures=500, keepPercent=0.2, debug=False):
-    imgGray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    templateGray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
+    gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    gray_template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
     
     orb = cv2.ORB_create(maxFeatures)
-    (kpsA, descsA) = orb.detectAndCompute(imgGray, None)
-    (kpsB, descsB) = orb.detectAndCompute(templateGray, None)
+    (kpsA, descsA) = orb.detectAndCompute(gray_image, None)
+    (kpsB, descsB) = orb.detectAndCompute(gray_template, None)
     
     method = cv2.DESCRIPTOR_MATCHER_BRUTEFORCE_HAMMING
     matcher = cv2.DescriptorMatcher_create(method)
