@@ -1,13 +1,13 @@
 import serial
 import cv2
 import numpy as np
-import ocr_form
+import ocr_image
 
 ser = serial.Serial('/dev/ttyAMA0',115200)
 if(ser.isOpen()):
 	print("Serial Communication in operation")
 
-VideoSignal = cv2.VideoCapture(0)
+LiveCam = cv2.VideoCapture(0)
 YOLO_net = cv2.dnn.readNet('yolov3-tiny_best.weights','yolov3-tiny.cfg')
 
 classes = ['box']
@@ -16,8 +16,8 @@ output_layers = [layer_names[i[0] - 1] for i in YOLO_net.getUnconnectedOutLayers
 
 frame_num = 0
 
-while VideoSignal.isOpened():
-    ret, frame = VideoSignal.read()
+while LiveCam.isOpened():
+    ret, frame = LiveCam.read()
     if ret is False:
         print("No Video Input")
         break
