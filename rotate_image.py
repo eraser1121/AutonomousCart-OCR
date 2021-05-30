@@ -2,7 +2,7 @@ import numpy as np
 import imutils
 import cv2
 
-def align_images(image, template, maxFeatures=500, keepPercent=0.2, debug=False):
+def rotate_image(image, template, maxFeatures=500, keepPercent=0.2, debug=False):
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray_template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
     
