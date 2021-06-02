@@ -81,9 +81,11 @@ while LiveCam.isOpened():
 
         if cv2.waitKey(100) > 0:
             break
-if cv2.waitKey(100) > 0 :
-    cv2.imwrite('cap_img.jpg', frame)
-    ser.write(serial.to_bytes([int('3',16)]))
+while(1) :
+    if cv2.waitKey(100) > 0 :
+        cv2.imwrite('cap_img.jpg', frame)
+        ser.write(serial.to_bytes([int('3',16)]))
+        break
 
 image = cv2.imread("cap_img.jpg")
 template = cv2.imread("myform.jpg")
