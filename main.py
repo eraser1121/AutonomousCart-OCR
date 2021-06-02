@@ -17,6 +17,7 @@ output_layers = [layer_names[i[0] - 1] for i in YOLO_net.getUnconnectedOutLayers
 frame_num = 0
 
 while LiveCam.isOpened():
+    count = 0
     ret, frame = LiveCam.read()
     if ret is False:
         print("No Video Input")
@@ -72,20 +73,23 @@ while LiveCam.isOpened():
 
             else :
                 print("직진")
-                break
+                count = 1
+
 
             cv2.rectangle(frame, (best_x, best_y), (best_x + best_w, best_y + best_h), (0, 0, 255), 5)
             cv2.putText(frame, 'box', (best_x, best_y - 20), cv2.FONT_ITALIC, 0.5, (255, 255, 255), 1)
 
         cv2.imshow("YOLOv3", frame)
+        if count == 1 :
+            if cv2.waitKey(100) > 0 :
+                cv2.imwrite('cap_img.jpg', frame)
+                ser.write(serial.to_bytes([int('3',16)]))
+                break
+            
 
         if cv2.waitKey(100) > 0:
             break
-while(1) :
-    if cv2.waitKey(100) > 0 :
-        cv2.imwrite('cap_img.jpg', frame)
-        ser.write(serial.to_bytes([int('3',16)]))
-        break
+
 
 image = cv2.imread("cap_img.jpg")
 template = cv2.imread("myform.jpg")
