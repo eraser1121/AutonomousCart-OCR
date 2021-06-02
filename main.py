@@ -58,26 +58,23 @@ while LiveCam.isOpened():
         indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.45, 0.4)
 
        
-        if confidences:
-            bestscore = confidences.index(max(confidences))
-            best_x, best_y, best_w, best_h = boxes[bestscore]
-            
-            if best_x > 320 :
-                print("오른쪽으로 이동")
-                ser.write(serial.to_bytes([int('1',16)]))
-
-            elif best_x + best_w < 320 :
-                print("왼쪽으로 이동")
-                ser.write(serial.to_bytes([int('2',16)]))
-
-            else :
-                print("직진")
-		cv2.imwrite('cap_img.jpg', frame)
-		ser.write(serial.to_bytes([int('3',16)]))
-                break
-
-            cv2.rectangle(frame, (best_x, best_y), (best_x + best_w, best_y + best_h), (0, 0, 255), 5)
-            cv2.putText(frame, 'box', (best_x, best_y - 20), cv2.FONT_ITALIC, 0.5, (255, 255, 255), 1)
+        if confidences :
+		bestscore = confidences.index(max(confidences))
+		best_x, best_y, best_w, best_h = boxes[bestscore]
+            	if best_x > 320 :
+			print("오른쪽으로 이동")
+			ser.write(serial.to_bytes([int('1',16)]))
+		elif best_x + best_w < 320 :
+                	print("왼쪽으로 이동")
+			ser.write(serial.to_bytes([int('2',16)]))
+		else :
+			print("직진")
+			cv2.imwrite('cap_img.jpg', frame)
+			ser.write(serial.to_bytes([int('3',16)]))
+			break
+		
+		cv2.rectangle(frame, (best_x, best_y), (best_x + best_w, best_y + best_h), (0, 0, 255), 5)
+		cv2.putText(frame, 'box', (best_x, best_y - 20), cv2.FONT_ITALIC, 0.5, (255, 255, 255), 1)
 
         cv2.imshow("YOLOv3", frame)
 
