@@ -15,9 +15,9 @@ layer_names = YOLO_net.getLayerNames()
 output_layers = [layer_names[i[0] - 1] for i in YOLO_net.getUnconnectedOutLayers()]
 
 frame_num = 0
-
+count = 0
 while LiveCam.isOpened():
-    count = 0
+    
     ret, frame = LiveCam.read()
     if ret is False:
         print("No Video Input")
