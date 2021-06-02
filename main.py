@@ -84,11 +84,11 @@ while LiveCam.isOpened():
 
         if cv2.waitKey(100) > 0:
             break
-'''
+
 image = cv2.imread("cap_img.jpg")
 template = cv2.imread("myform.jpg")
 
-ocr_result = ocr_form.ocr(image, template)
+ocr_result = ocr_image.ocr(image, template)
 
 (name, result) = ocr_result["name"]
 (address, result) = ocr_result["address"]
@@ -102,4 +102,4 @@ print(name)
 print(address)
 print(detail_address)
 
-'''
+
