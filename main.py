@@ -62,11 +62,11 @@ while LiveCam.isOpened():
             bestscore = confidences.index(max(confidences))
             best_x, best_y, best_w, best_h = boxes[bestscore]
             
-            if best_x > 320 :
+            if best_x > 310 :
                 print("오른쪽으로 이동")
                 ser.write(serial.to_bytes([int('1',16)]))
 
-            elif best_x + best_w < 320 :
+            elif best_x + best_w < 330 :
                 print("왼쪽으로 이동")
                 ser.write(serial.to_bytes([int('2',16)]))
 
