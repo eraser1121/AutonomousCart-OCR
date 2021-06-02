@@ -29,7 +29,7 @@ def ocr(image, template) :
         cv2.waitKey(0)
     
         rgb = cv2.cvtColor(roi, cv2.COLOR_BGR2RGB)
-        text = pytesseract.image_to_string(rgb, lang='Hangul')
+        text = pytesseract.image_to_string(rgb, lang='kor')
     
         for line in text.split("\n"):
             if len(line) == 0:
