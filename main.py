@@ -58,7 +58,7 @@ while LiveCam.isOpened():
         indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.45, 0.4)
 
        
-        if confidences:
+        if confidences :
             bestscore = confidences.index(max(confidences))
             best_x, best_y, best_w, best_h = boxes[bestscore]
             
