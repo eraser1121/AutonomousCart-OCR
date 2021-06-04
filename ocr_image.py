@@ -25,7 +25,7 @@ def ocr(image, template) :
     for loc in OCR_Locations:
         (x, y, w, h) = loc.bbox
         roi = aligned[y:y+h, x:x+w]
-        // cv2.imshow(loc.id, roi)
+        # cv2.imshow(loc.id, roi)
         cv2.waitKey(0)
     
         rgb = cv2.cvtColor(roi, cv2.COLOR_BGR2RGB)
@@ -62,8 +62,8 @@ def ocr(image, template) :
         print("=" * len(loc["id"]))
         print("{}\n".format(text))
 
-    // cv2.imshow("Input", imutils.resize(image))
-    // cv2.imshow("Output", imutils.resize(aligned))
+    # cv2.imshow("Input", imutils.resize(image))
+    # cv2.imshow("Output", imutils.resize(aligned))
     cv2.waitKey(0)
     
     return results
