@@ -117,7 +117,10 @@ destination_num = findDB.set_destination(name, detail_address)
 print (destination_num)
 
 sleep(10)
-ser.write(serial.to_bytes([int('10',16)]))
-
+ser.write(serial.to_bytes([int('6',16)]))
+ser.write(serial.to_bytes([int('6',16)]))
+ser.write(serial.to_bytes([int('6',16)]))
+ser.write(serial.to_bytes([int('6',16)]))
+ser.write(serial.to_bytes([int('6',16)]))
 
 
