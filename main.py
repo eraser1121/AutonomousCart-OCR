@@ -2,6 +2,7 @@ import serial
 import cv2
 import numpy as np
 import ocr_image
+import findDB
 
 ser = serial.Serial('/dev/ttyAMA0',115200)
 if(ser.isOpen()):
@@ -108,4 +109,8 @@ print(name)
 print(address)
 print(detail_address)
 
+name = findDB.find_name(name)
+detail_address = findDB.find_address(detail_address)
 
+destination_num = findDB.set_destination(name, detail_address)
+print (destination_num)
