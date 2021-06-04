@@ -26,7 +26,7 @@ def ocr(image, template) :
         (x, y, w, h) = loc.bbox
         roi = aligned[y:y+h, x:x+w]
         # cv2.imshow(loc.id, roi)
-        cv2.waitKey(0)
+        # cv2.waitKey(0)
     
         rgb = cv2.cvtColor(roi, cv2.COLOR_BGR2RGB)
         text = pytesseract.image_to_string(rgb, lang='kor')
