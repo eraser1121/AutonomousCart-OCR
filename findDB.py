@@ -32,5 +32,5 @@ def set_destination(name, address):
     elif name == '박민국' or address == '박민국' :
         return 702
     else :
-        return 'error : no destination"
+        return 'error : no destination'
  
