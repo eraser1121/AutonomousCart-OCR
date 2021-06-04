@@ -1,18 +1,9 @@
 import serial
 import cv2
-import threading
+from time import sleep
 import numpy as np
 import ocr_image
 import findDB
-
-timecount = 0
-def timer():
-    global timecount
-    timecount += 1
-    timer = threading.Timer(1, timer)
-    timer.start()
-    if timecount == 10:
-        timer.cancle()
 
 ser = serial.Serial('/dev/ttyAMA0',115200)
 if(ser.isOpen()):
@@ -122,8 +113,11 @@ print(detail_address)
 name = findDB.find_name(name)
 detail_address = findDB.find_address(detail_address)
 
+destination_num = findDB.set_destination(name, detail_address)
+print (destination_num)
+
+sleep(10)
 ser.write(serial.to_bytes([int('10',16)]))
 
-destination_num = findDB.set_destination(name, detail_address)
-timer()
-print (destination_num)
+
+
