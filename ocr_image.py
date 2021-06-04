@@ -64,6 +64,6 @@ def ocr(image, template) :
 
     # cv2.imshow("Input", imutils.resize(image))
     # cv2.imshow("Output", imutils.resize(aligned))
-    cv2.waitKey(0)
+    # cv2.waitKey(0)
     
     return results
