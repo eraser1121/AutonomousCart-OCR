@@ -116,7 +116,7 @@ detail_address = findDB.find_address(detail_address)
 destination_num = findDB.set_destination(name, detail_address)
 print (destination_num)
 
-sleep(10)
+sleep(5)
 
 while(1) : 
     ser.write(serial.to_bytes([int('6',16)]))
