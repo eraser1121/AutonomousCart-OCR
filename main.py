@@ -117,10 +117,9 @@ destination_num = findDB.set_destination(name, detail_address)
 print (destination_num)
 
 sleep(10)
-sercount = 0
-while(sercount < 5) : 
+
+while(1) : 
     ser.write(serial.to_bytes([int('6',16)]))
-    sercount += 1
 
 
 
