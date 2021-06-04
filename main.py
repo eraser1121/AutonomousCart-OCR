@@ -112,7 +112,7 @@ print(detail_address)
 name = findDB.find_name(name)
 detail_address = findDB.find_address(detail_address)
 
-ser.write(serial.to_bytes([int('3',16)]))
+ser.write(serial.to_bytes([int('10',16)]))
 
 destination_num = findDB.set_destination(name, detail_address)
 print (destination_num)
